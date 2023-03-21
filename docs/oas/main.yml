@@ -1,0 +1,115 @@
+openapi: '3.0.2'
+info:
+  title: Sunrise and Sunset API
+  description: API for getting information about the sun's position
+  version: '1.0'
+# servers:
+#   - url: https://api.server.test/v1
+paths:
+  /time{lat}{long}{date}:
+    get:
+      parameters:
+        - name: lat
+          in: path
+          schema:
+            type: number
+            nullable: false
+            minimum: -90
+            maximum: 90
+          description: Latitude
+          required: true
+          examples:
+            London:
+              value: 51.5
+        - name: long
+          in: path
+          schema:
+            type: number
+            nullable: false
+            minimum: -180
+            maximum: 180
+          description: Longitude
+          required: true
+          examples:
+            London:
+              value: -0.1
+        - name: date
+          in: path
+          schema:
+            type: string
+            format: date
+            default: today
+            nullable: true
+          required: true
+          description: Specifies the day for the requested sun timing information
+          examples:
+            Today: 
+              value: 
+            ExampleDate:
+              value: 2017-07-21
+      responses:
+        '200':
+          description: A object describing the timing of the sun's position for a location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sunrise:
+                    type: string
+                    format: date-time
+                    description: Sunrise (top edge of the sun appears on the horizon)
+                  sunriseEnd:
+                    type: string
+                    format: date-time
+                    description: Sunrise ends (bottom edge of the sun touches the horizon)
+                  goldenHourEnd:
+                    type: string
+                    format: date-time
+                    description: morning golden hour (soft light, best time for photography) ends
+                  solarNoon:
+                    type: string
+                    format: date-time
+                    description: solar noon (sun is in the highest position)
+                  goldenHour:
+                    type: string
+                    format: date-time
+                    description: evening golden hour starts
+                  sunsetStart:
+                    type: string
+                    format: date-time
+                    description: sunset starts (bottom edge of the sun touches the horizon)
+                  sunset:
+                    type: string
+                    format: date-time
+                    description: sunset (sun disappears below the horizon, evening civil twilight starts)
+                  dusk:
+                    type: string
+                    format: date-time
+                    description: dusk (evening nautical twilight starts)
+                  nauticalDusk:
+                    type: string
+                    format: date-time
+                    description: nautical dusk (evening astronomical twilight starts)
+                  night:
+                    type: string
+                    format: date-time
+                    description: night starts (dark enough for astronomical observations)
+                  nadir:
+                    type: string
+                    format: date-time
+                    description: nadir (darkest moment of the night, sun is in the lowest position)
+                  nightEnd:
+                    type: string
+                    format: date-time
+                    description: night ends (morning astronomical twilight starts)
+                  nauticalDawn:
+                    type: string
+                    format: date-time
+                    description: nautical dawn (morning nautical twilight starts)
+                  dawn:
+                    type: string
+                    format: date-time
+                    description: dawn (morning nautical twilight ends, morning civil twilight starts)
+                
+
