@@ -1,3 +1,5 @@
 docs
 node_modules
 .github
+dist
+test-out
