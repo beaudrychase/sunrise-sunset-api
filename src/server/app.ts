@@ -4,7 +4,7 @@ import { checkSchema } from 'express-validator/src/middlewares/schema'
 const sunCalc = require('suncalc')
 const app = express()
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3000)
 
 app.get(
   '/time',
@@ -25,7 +25,7 @@ app.get(
       in: ['params', 'query'],
       isDecimal: {
         bail: true,
-        errorMessage: "Valeu must be decimal value"
+        errorMessage: "Value must be decimal value"
       },
       custom: {
         options: (value, {}) => {
