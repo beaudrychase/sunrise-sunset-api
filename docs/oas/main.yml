@@ -6,11 +6,11 @@ info:
 # servers:
 #   - url: https://api.server.test/v1
 paths:
-  /time{lat}{long}{date}:
+  /time:
     get:
       parameters:
         - name: lat
-          in: path
+          in: query
           schema:
             type: number
             nullable: false
@@ -22,7 +22,7 @@ paths:
             London:
               value: 51.5
         - name: long
-          in: path
+          in: query
           schema:
             type: number
             nullable: false
@@ -34,17 +34,13 @@ paths:
             London:
               value: -0.1
         - name: date
-          in: path
+          in: query
           schema:
             type: string
             format: date
-            default: today
-            nullable: true
-          required: true
+          required: false
           description: Specifies the day for the requested sun timing information
           examples:
-            Today: 
-              value: 
             ExampleDate:
               value: 2017-07-21
       responses:
