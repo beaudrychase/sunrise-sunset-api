@@ -2,7 +2,7 @@ openapi: '3.0.2'
 info:
   title: Sunrise and Sunset API
   description: API for getting information about the sun's position
-  version: '1.0'
+  version: '0.0.1'
 # servers:
 #   - url: https://api.server.test/v1
 paths:
@@ -107,5 +107,22 @@ paths:
                     type: string
                     format: date-time
                     description: dawn (morning nautical twilight ends, morning civil twilight starts)
+              examples:
+                Sample:
+                  value:
+                    solarNoon: 2023-03-22T12:08:17.611Z
+                    nadir: 2023-03-22T00:08:17.611Z
+                    sunrise: 2023-03-22T06:04:57.684Z
+                    sunset: 2023-03-22T18:11:37.539Z
+                    sunriseEnd: 2023-03-22T06:07:05.609Z
+                    sunsetStart: 2023-03-22T18:09:29.614Z
+                    dawn: 2023-03-22T05:44:17.560Z
+                    dusk: 2023-03-22T18:32:17.663Z
+                    nauticalDawn: 2023-03-22T05:20:17.508Z
+                    nauticalDusk: 2023-03-22T18:56:17.715Z
+                    nightEnd: 2023-03-22T04:56:17.453Z
+                    night: 2023-03-22T19:20:17.770Z
+                    goldenHourEnd: 2023-03-22T06:32:17.663Z
+                    goldenHour: 2023-03-22T17:44:17.560Z
                 
 
