@@ -1,5 +1,6 @@
 name: Jest
 on:
+  push:
   pull_request:
     branches:
       - master
@@ -11,7 +12,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: "12"
 
       # Speed up subsequent runs with caching
       - name: Cache node modules
