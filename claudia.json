@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "sunrise-sunset-api-executor",
+    "name": "sunrise-sunset-api",
+    "region": "us-east-1"
+  },
+  "api": {
+    "id": "u0nzvt2i0j"
+  }
+}

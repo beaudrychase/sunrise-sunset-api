@@ -1,10 +1,11 @@
-import express = require('express')
+import express from 'express'
 import { validationResult } from 'express-validator'
 import { checkSchema } from 'express-validator/src/middlewares/schema'
-import sunCalc = require('suncalc')
+import sunCalc from 'suncalc'
+
 const app = express()
 
-app.set('port', process.env.PORT || 3000)
+app.get('/', (req, res) => res.send('Hello world!'))
 
 app.get(
   '/time',
@@ -55,8 +56,13 @@ app.get(
     const lat = req.query.lat
     const long = req.query.long
     const date = req.query.date ?? Date.now()
-    res.status(200).json(sunCalc.getTimes(date, lat, long))
+    const resultBody = sunCalc.getTimes(date, lat, long)
+    resultBody['now'] = new Date(Date.now())
+    console.log(resultBody)
+    res.status(200).json(resultBody)
   }
 )
-
+// required by everything else
 export default app
+// required by claudia
+// module.exports = app

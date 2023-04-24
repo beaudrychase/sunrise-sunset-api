@@ -1,5 +1,5 @@
 import app from '../../src/server/app'
-import * as request from 'supertest'
+import request from 'supertest'
 import { describe } from 'node:test'
 import { expect } from '@jest/globals'
 import '../helpers/toBeDate'
@@ -36,6 +36,17 @@ describe('/time GET returns 200 with valid parameters', () => {
     async testQuery => {
       const result = await request(app).get('/time').query(testQuery)
       expect(result.statusCode).toEqual(200)
+    }
+  )
+})
+
+describe('\time GET returns object with current time', () => {
+  it.each([exampleQuery, exampleQueryWithDate])(
+    'Returns the current time',
+    async testQuery => {
+      const result = await request(app).get('/time').query(testQuery)
+      console.log(result.body)
+      expect(result.body).toHaveProperty('now')
     }
   )
 })
