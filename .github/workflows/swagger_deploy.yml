@@ -3,14 +3,15 @@ name: Deploy GitHub Pages
 on:
   push:
 
+jobs:
   generate-swagger-ui:
     runs-on: ubuntu-latest
     steps:
         - name: Generate Swagger UI
-        uses: Legion2/swagger-ui-action@v1
-        with:
-          output: swagger-ui
-          spec-file: docs/oas/main.yml
+          uses: Legion2/swagger-ui-action@v1
+          with:
+            output: swagger-ui
+            spec-file: docs/oas/main.yml
   deploy:
     needs: generate-swagger-ui
     runs-on: ubuntu-latest
