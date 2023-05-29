@@ -3,39 +3,18 @@ name: Deploy GitHub Pages
 on:
   push:
 
-jobs:
-  generate-openapi-spec:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 5.0.100
-      - name: Install dependencies
-        run: dotnet restore
-      - name: Install tools
-        run: dotnet tool restore
-      - name: Generate openapi.json
-        run: dotnet nswag run nswag.json
-      - name: Upload openapi.json
-        uses: actions/upload-artifact@v3
-        with:
-          name: spec-file
-          path: docs/oas/main.yml
-  deploy:
-    needs: generate-openapi-spec
+  generate-swagger-ui:
     runs-on: ubuntu-latest
     steps:
-      - name: Download openapi.json
-        uses: actions/download-artifact@v3
-        with:
-          name: spec-file
-      - name: Generate Swagger UI
+        - name: Generate Swagger UI
         uses: Legion2/swagger-ui-action@v1
         with:
           output: swagger-ui
-          spec-file: main.yml
+          spec-file: docs/oas/main.yml
+  deploy:
+    needs: generate-swagger-ui
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
