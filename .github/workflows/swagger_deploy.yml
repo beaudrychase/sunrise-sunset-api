@@ -8,16 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v2
-        - name: Upload open api spec
-          uses: actions/upload-artifact@v3
-          with:
-            name: spec-file
-            path: docs/oas/main.yml
         - name: Generate Swagger UI
           uses: Legion2/swagger-ui-action@v1
           with:
             output: swagger-ui
-            spec-file: spec-file
+            spec-file: docs/oas/main.yml
   deploy:
     needs: generate-swagger-ui
     runs-on: ubuntu-latest
