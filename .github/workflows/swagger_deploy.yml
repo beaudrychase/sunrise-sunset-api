@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages
+name: Deploy Swagger to Github Pages
 
 on:
   push:
@@ -7,11 +7,16 @@ jobs:
   generate-swagger-ui:
     runs-on: ubuntu-latest
     steps:
+        - name: Upload openapi.json
+          uses: actions/upload-artifact@v3
+          with:
+            name: spec-file
+            path: docs/oas/main.yml
         - name: Generate Swagger UI
           uses: Legion2/swagger-ui-action@v1
           with:
             output: swagger-ui
-            spec-file: docs/oas/main.yml
+            spec-file: spec-file
   deploy:
     needs: generate-swagger-ui
     runs-on: ubuntu-latest
