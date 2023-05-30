@@ -3,8 +3,10 @@ info:
   title: Sunrise and Sunset API
   description: API for getting information about the sun's position
   version: '0.0.1'
-# servers:
-#   - url: https://api.server.test/v1
+servers:
+  - url: https://sun-api.beaudrychase.xyz
+ security:
+  - bearerAuth: []
 paths:
   /time:
     get:
@@ -124,5 +126,9 @@ paths:
                     night: 2023-03-22T19:20:17.770Z
                     goldenHourEnd: 2023-03-22T06:32:17.663Z
                     goldenHour: 2023-03-22T17:44:17.560Z
-                
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer                
 
