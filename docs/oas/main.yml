@@ -5,7 +5,7 @@ info:
   version: '0.0.1'
 servers:
   - url: https://sun-api.beaudrychase.xyz
- security:
+security:
   - bearerAuth: []
 paths:
   /time:
@@ -127,8 +127,7 @@ paths:
                     goldenHourEnd: 2023-03-22T06:32:17.663Z
                     goldenHour: 2023-03-22T17:44:17.560Z
 components:
-  securitySchemes:
-    bearerAuth:            # arbitrary name for the security scheme
-      type: http
-      scheme: bearer                
-
+    securitySchemes:
+      bearerAuth:            # arbitrary name for the security scheme
+        type: http
+        scheme: bearer
